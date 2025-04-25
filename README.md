@@ -29,13 +29,13 @@ This is a Node.js API for managing AI safety incidents. It allows users to log, 
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/ai-safety-incident-log-api.git
+   git clone https://github.com/jainnaman-jain/project_sparklehood
    ```
 
 2. **Navigate to the project folder:**
 
    ```bash
-   cd ai-safety-incident-log-api
+   cd project_sparklehood
    ```
 
 3. **Install dependencies:**
