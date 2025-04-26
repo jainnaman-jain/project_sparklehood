@@ -15,8 +15,11 @@ app.set("views", path.resolve('./views'))
 app.use(express.json());
 app.use(cors())
 
+
 // Routes
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
+
+
 
 /**
  * @swagger
@@ -94,6 +97,39 @@ app.get('/incidents/:id', getIncidentById);
 app.delete('/incidents/:id', deleteIncidentById);
 
 
+// Catch-all route for undefined routes
+app.use((req, res) => {
+  res.send(`
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="refresh" content="2;url=/api-docs" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Page Not Found</title>
+      <style>
+        body {
+          background-color: #f8f9fa;
+          color: #343a40;
+          font-family: Arial, sans-serif;
+          text-align: center;
+          padding-top: 100px;
+        }
+        h1 {
+          font-size: 50px;
+        }
+        p {
+          font-size: 20px;
+        }
+      </style>
+    </head>
+    <body>
+      <h1>404 - Page Not Found</h1>
+      <p>Redirecting you to API Docs...</p>
+    </body>
+    </html>
+  `);
+});
 
 // Start server
 app.listen(PORT, () => console.log(`Server started at PORT: ${PORT}`));
